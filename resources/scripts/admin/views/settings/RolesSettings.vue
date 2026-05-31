@@ -28,7 +28,9 @@
       <template #cell-actions="{ row }">
         <RoleDropdown
           v-if="
-            userStore.currentUser.is_owner && row.data.name !== 'super admin'
+            userStore.currentUser.is_owner &&
+            row.data.name !== 'super admin' &&
+            row.data.name !== 'company owner'
           "
           :row="row.data"
           :table="table"

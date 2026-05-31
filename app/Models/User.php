@@ -334,7 +334,7 @@ class User extends Authenticatable implements HasMedia
         if (Schema::hasColumn('companies', 'owner_id')) {
             $company = Company::find(request()->header('company'));
 
-            if ($company && $this->id == $company->owner_id) {
+            if ($company && ($this->id == $company->owner_id || $this->isA('company owner'))) {
                 return true;
             }
         } else {

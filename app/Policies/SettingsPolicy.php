@@ -12,7 +12,7 @@ class SettingsPolicy
 
     public function manageCompany(User $user, Company $company)
     {
-        if ($user->id == $company->owner_id) {
+        if ($user->id == $company->owner_id || $user->isOwner()) {
             return true;
         }
 
